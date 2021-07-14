@@ -1,0 +1,36 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /cadeiasocietaria
+
+spring:
+  data:
+    cassandra:
+      contact-points: 127.0.0.1
+      username: #${DATABASE_USER:src/main/resources/database/secret-db-username}
+      password: #${DATABASE_USER:src/main/resources/database/secret-db-password}
+      keyspace: stpes
+      port: 9042
+      schema-action: NONE
+      local-datacenter: datacenter1
+
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: com.brq.santander.cadeiasocietaria.serializer.KafkaSerializer
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: group_id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: com.brq.santander.cadeiasocietaria.deserializer.KafkaDeserializer
+      # Desliga o commit automático no Cliente Kafka
+      #enable-auto-commit: false
+
+#configurações kafka
+bootstrap-servers: localhost:9092
+group: group1
+topic:
+  producer: BR.CDF.UBO.send.records
+  consumer: BR.CDF.UBO.receive.records
