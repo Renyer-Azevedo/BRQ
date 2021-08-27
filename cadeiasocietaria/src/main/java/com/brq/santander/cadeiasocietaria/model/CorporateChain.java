@@ -1,7 +1,5 @@
 package com.brq.santander.cadeiasocietaria.model;
 
-import java.math.BigDecimal;
-
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.core.mapping.Table;
@@ -15,38 +13,41 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(value = "cadeia_societaria")
 public class CorporateChain {
-    @PrimaryKeyColumn(ordinal = 0,type = PrimaryKeyType.PARTITIONED)
-    String penumper;
-    @PrimaryKeyColumn(ordinal = 2,type = PrimaryKeyType.PARTITIONED)
-    String penumero;
-    String flagBf;
-    String flagCompletude;
-    String origem;
-    String pecaradm;
-    String pecarcon;
-    @PrimaryKeyColumn(ordinal = 1,type = PrimaryKeyType.PARTITIONED)
-    String pecodrel;
-    java.sql.Timestamp pefecalt;
-    java.sql.Timestamp pefecini;
-    java.sql.Timestamp pefecter;
-    java.sql.Timestamp pehstamp;
-    String peindrep;
-    BigDecimal penivel;
-    String penomfan;
-    String penomper;
-    @PrimaryKeyColumn(ordinal = 3, type = PrimaryKeyType.PARTITIONED)
-    String penumpri;
-    String penumrel;
-    BigDecimal peporcom;
-    BigDecimal peporpar;
-    BigDecimal peporpri;
-    BigDecimal peporrel;
-    String petipdoc;
-    String petipdocpri;
-    String petippar;
-    String petipper;
-    String peusualt;
-    String peusumod;
-    BigDecimal porreltot;
-    String relnumero;
+  @PrimaryKeyColumn(ordinal = 0, type = PrimaryKeyType.PARTITIONED)
+  private String penumper;
+  @PrimaryKeyColumn(ordinal = 1, type = PrimaryKeyType.PARTITIONED)
+  private Double penivel;
+  @PrimaryKeyColumn(ordinal = 2, type = PrimaryKeyType.PARTITIONED)
+  private String penumrel;
+  @PrimaryKeyColumn(ordinal = 3, type = PrimaryKeyType.PARTITIONED)
+  private String pecodrel;
+  @PrimaryKeyColumn(ordinal = 4, type = PrimaryKeyType.PARTITIONED)
+  private String petipper;
+  @PrimaryKeyColumn(ordinal = 5, type = PrimaryKeyType.PARTITIONED)
+  private java.sql.Timestamp pehstamp;
+  @PrimaryKeyColumn(ordinal = 6, type = PrimaryKeyType.PARTITIONED)
+  private String penumpri;
+  private String flagBf;
+  private String flagCompletude;
+  private String origem;
+  private String pecaradm;
+  private String pecarcon;
+  private java.sql.Timestamp pefecalt;
+  private java.sql.Timestamp pefecini;
+  private java.sql.Timestamp pefecter;
+  private String peindrep;
+  private String penomper;
+  private String penomrel;
+  private String penumero;
+  private Double peporcom;
+  private Double peporpar;
+  private Double peporpri;
+  private Double peporrel;
+  private String petipdoc;
+  private String petippar;
+  private String peusualt;
+  private String peusumod;
+  private Double porreltot;
+  private String relnumero;
+  private String reltipdoc;
 }

@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.brq.santander.cadeiasocietaria.dto.CorporateChainDto;
+import com.brq.santander.cadeiasocietaria.dto.CorporateChainPageableResponseDTO;
 import com.brq.santander.cadeiasocietaria.model.CorporateChain;
 import com.brq.santander.cadeiasocietaria.service.CorporateChainService;
 
@@ -33,8 +34,11 @@ public class CorporateChainController {
     
     @GetMapping(value = "/{penumpri}")
     @ResponseBody
-    public List<CorporateChainDto> buscarCorporateChainPorPenumpri(@PathVariable String penumpri) {
-        return corporateChainService.buscarCorporateChainPorPenumpri(penumpri);
+    public CorporateChainPageableResponseDTO buscarCorporateChainPorPenumpri(@PathVariable String penumpri, 
+    		@RequestParam(defaultValue = "0", name = "_offset", required = false) Integer offset, 
+            @RequestParam(defaultValue = "10000", name = "_limit", required = false) Integer limit,
+            @RequestParam(defaultValue = "asc", name = "_sort", required = false) String sortBy) {
+        return corporateChainService.buscarCorporateChainPorPenumpri(penumpri,offset,limit,sortBy);
     }
 
 }
