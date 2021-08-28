@@ -36,8 +36,8 @@ public class CorporateChainController {
     @ResponseBody
     public CorporateChainPageableResponseDTO buscarCorporateChainPorPenumpri(@PathVariable String penumpri, 
     		@RequestParam(defaultValue = "0", name = "_offset", required = false) Integer offset, 
-            @RequestParam(defaultValue = "10000", name = "_limit", required = false) Integer limit,
-            @RequestParam(defaultValue = "asc", name = "_sort", required = false) String sortBy) {
+            @RequestParam(defaultValue = "10", name = "_limit", required = false) Integer limit,
+            @RequestParam(defaultValue = "nivel", name = "_sort", required = false) String sortBy) throws Exception {
         return corporateChainService.buscarCorporateChainPorPenumpri(penumpri,offset,limit,sortBy);
     }
 

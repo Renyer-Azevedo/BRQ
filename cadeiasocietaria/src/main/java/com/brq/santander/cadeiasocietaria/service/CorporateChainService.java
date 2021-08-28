@@ -9,6 +9,6 @@ public interface CorporateChainService {
 
 	List<CorporateChain> listarTodos();
 	
-	CorporateChainPageableResponseDTO buscarCorporateChainPorPenumpri(String penumpri, Integer Offset, Integer limit, String sortBy);
+	CorporateChainPageableResponseDTO buscarCorporateChainPorPenumpri(String penumpri, Integer offset, Integer limit, String sortBy) throws Exception;
 	
 }
