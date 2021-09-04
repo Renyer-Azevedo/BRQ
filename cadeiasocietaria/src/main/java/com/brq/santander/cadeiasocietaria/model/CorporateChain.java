@@ -24,7 +24,7 @@ public class CorporateChain {
   @PrimaryKeyColumn(ordinal = 4, type = PrimaryKeyType.PARTITIONED)
   private String petipper;
   @PrimaryKeyColumn(ordinal = 5, type = PrimaryKeyType.PARTITIONED)
-  private java.sql.Timestamp pehstamp;
+  private String pehstamp;
   @PrimaryKeyColumn(ordinal = 6, type = PrimaryKeyType.PARTITIONED)
   private String penumpri;
   private String flagBf;
@@ -32,9 +32,9 @@ public class CorporateChain {
   private String origem;
   private String pecaradm;
   private String pecarcon;
-  private java.sql.Timestamp pefecalt;
-  private java.sql.Timestamp pefecini;
-  private java.sql.Timestamp pefecter;
+  private String pefecalt;
+  private String pefecini;
+  private String pefecter;
   private String peindrep;
   private String penomper;
   private String penomrel;

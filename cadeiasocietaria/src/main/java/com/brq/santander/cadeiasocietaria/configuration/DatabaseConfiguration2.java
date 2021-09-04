@@ -10,12 +10,14 @@ import org.springframework.data.cassandra.config.SessionFactoryFactoryBean;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.data.cassandra.core.CassandraTemplate;
 import org.springframework.data.cassandra.core.convert.CassandraConverter;
+import org.springframework.data.cassandra.core.convert.CassandraCustomConversions;
 import org.springframework.data.cassandra.core.convert.MappingCassandraConverter;
-import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
 import org.springframework.data.cassandra.core.mapping.SimpleUserTypeResolver;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
+import com.brq.santander.cadeiasocietaria.converter.InstantToStringConverter;
 import com.datastax.oss.driver.api.core.CqlSession;
+import com.datastax.oss.driver.shaded.guava.common.collect.Lists;
 
 import lombok.Data;
 
@@ -58,19 +60,11 @@ public class DatabaseConfiguration2 {
 	    return sessionFactory;
 	  }
 
-//	  @Bean
-//	  public CassandraMappingContext mappingContext(CqlSession cqlSession) {
-//
-//	    CassandraMappingContext mappingContext = new CassandraMappingContext();
-//	    //mappingContext.setUserTypeResolver(new SimpleUserTypeResolver(cqlSession));
-//
-//	    return mappingContext;
-//	  }
-
 	  @Bean
 	  public CassandraConverter converter(CqlSession cqlSession) {
 		  MappingCassandraConverter mappingCassandraConverter = new MappingCassandraConverter();
 		  mappingCassandraConverter.setUserTypeResolver(new SimpleUserTypeResolver(cqlSession));
+		  mappingCassandraConverter.setCustomConversions(customConversions());
 	    return mappingCassandraConverter;
 	  }
 
@@ -79,5 +73,11 @@ public class DatabaseConfiguration2 {
 	    return new CassandraTemplate(sessionFactory, converter);
 	  }
 
-
+	  public CassandraCustomConversions customConversions() {
+		    return new CassandraCustomConversions(
+		      Lists.newArrayList(new InstantToStringConverter())
+		    );
+	  }
+	  
+	  
 }
